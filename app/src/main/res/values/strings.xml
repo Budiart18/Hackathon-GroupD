@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">Hackathon3_GroupD</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="text_header_name">Deliver To</string>
+    <string name="text_header_location">Jalan Depok Timur</string>
+    <string name="text_banner_desc">Stay home we deliver</string>
+    <string name="text_title_header">Deliver To</string>
+    <string name="text_banner_greeting">Any where... Any time!!</string>
 </resources>
