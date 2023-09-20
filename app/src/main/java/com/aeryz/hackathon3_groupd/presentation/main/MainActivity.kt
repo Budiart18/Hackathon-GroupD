@@ -1,7 +1,8 @@
-package com.aeryz.hackathon3_groupd
+package com.aeryz.hackathon3_groupd.presentation.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.aeryz.hackathon3_groupd.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
