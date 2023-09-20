@@ -6,13 +6,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.GridLayoutManager
-import com.aeryz.hackathon3_groupd.R
 import com.aeryz.hackathon3_groupd.data.ProductDataSourceImpl
+import com.aeryz.hackathon3_groupd.databinding.FragmentFruitDetailBinding
 import com.aeryz.hackathon3_groupd.databinding.FragmentFruitListBinding
 import com.aeryz.hackathon3_groupd.presentation.fruitlist.adapter.FruitListAdapter
 
 class FruitListFragment : Fragment() {
-    // TODO: Rename and change types of parameters
     private lateinit var binding: FragmentFruitListBinding
     private val adapter: FruitListAdapter by lazy {
         FruitListAdapter {

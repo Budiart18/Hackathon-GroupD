@@ -5,8 +5,6 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import coil.load
-import com.aeryz.hackathon3_groupd.data.ProductDataSource
 import com.aeryz.hackathon3_groupd.databinding.FruitItemListBinding
 import com.aeryz.hackathon3_groupd.model.Product
 
@@ -41,18 +39,4 @@ class FruitListAdapter(private val onItemClick: (Product) -> Unit): RecyclerView
         holder.bind(differ.currentList[position])
     }
 
-}
-
-class FruitListViewHolder(
-    private val binding: FruitItemListBinding,
-    private val onItemClick: (Product) -> Unit
-) : RecyclerView.ViewHolder(binding.root) {
-    fun bind(item: Product) {
-        binding.root.setOnClickListener {
-            onItemClick.invoke(item)
-        }
-        binding.ivImage.load(item.imgUrl)
-        binding.tvName.text = item.name
-        binding.tvPrice.text = item.price.toString()
-    }
 }
