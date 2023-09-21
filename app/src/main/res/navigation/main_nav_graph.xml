@@ -6,10 +6,22 @@
     app:startDestination="@id/fruitListFragment">
     <fragment
         android:id="@+id/fruitListFragment"
-        android:name="com.aeryz.hackathon3_groupd.presentation.fruitlist.FruitListFragment"
-        android:label="FruitListFragment" />
+        android:name="com.aeryz.hackathon3_groupd.presentation.productlist.ProductListFragment"
+        tools:layout="@layout/fragment_product_list"
+        android:label="FruitListFragment" >
+        <action
+            android:id="@+id/action_fruitListFragment_to_detailMenuFragment"
+            app:destination="@id/detailMenuFragment" />
+    </fragment>
     <fragment
-        android:id="@+id/fruitDetailFragment"
-        android:name="com.aeryz.hackathon3_groupd.presentation.fruitdetail.FruitDetailFragment"
-        android:label="FruitDetailFragment" />
+        android:id="@+id/detailMenuFragment"
+        android:name="com.aeryz.hackathon3_groupd.presentation.detailmenu.DetailMenuFragment"
+        android:label="DetailMenuFragment"
+        tools:layout="@layout/fragment_detail_menu">
+        <argument
+            android:name="product"
+            app:argType="com.aeryz.hackathon3_groupd.model.Product"
+            app:nullable="true"
+            android:defaultValue="@null" />
+    </fragment>
 </navigation>

@@ -1,4 +1,4 @@
-package com.aeryz.hackathon3_groupd.presentation.fruitlist.adapter
+package com.aeryz.hackathon3_groupd.presentation.productlist.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

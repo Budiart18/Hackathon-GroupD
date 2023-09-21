@@ -13,4 +13,6 @@
     <string name="fruit_desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent in posuere dui. In hac habitasse platea dictumst. Morbi vitae tincidunt leo. Etiam id libero at turpis mollis posuere consectetur.</string>
     <string name="fruit_farm">by Farm Fresh Veg Shop</string>
     <string name="fruit_name">Banana</string>
+    <string name="text_by_shop">by %s</string>
+    <string name="text_product_price_format_idr">IDR %.0f</string>
 </resources>
