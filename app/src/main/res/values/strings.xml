@@ -6,4 +6,7 @@
     <string name="text_header_location">Jalan Depok Timur</string>
     <string name="text_banner_desc">Stay home\nwe deliver</string>
     <string name="text_banner_greeting">Any where... Any time!!</string>
+    <string name="text_greeting_product">You might looking for</string>
+    <string name="text_product_weight_format">%.2f Kg</string>
+    <string name="text_product_price_format">Rp. %.0f</string>
 </resources>

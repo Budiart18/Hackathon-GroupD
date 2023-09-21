@@ -11,7 +11,7 @@ data class Product (
     val position : Int,
     val name: String,
     val price: Double,
-    val weight: Int,
+    val weight: Double,
     val supplierName: String,
     val rating: Double,
     val desc: String,

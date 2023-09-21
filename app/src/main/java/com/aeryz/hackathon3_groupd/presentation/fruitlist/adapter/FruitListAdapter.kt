@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
-import com.aeryz.hackathon3_groupd.data.ProductDataSource
+import com.aeryz.hackathon3_groupd.R
 import com.aeryz.hackathon3_groupd.databinding.FruitItemListBinding
 import com.aeryz.hackathon3_groupd.model.Product
 
@@ -53,6 +53,7 @@ class FruitListViewHolder(
         }
         binding.ivImage.load(item.imgUrl)
         binding.tvName.text = item.name
-        binding.tvPrice.text = item.price.toString()
+        binding.tvWeight.text = itemView.context.getString(R.string.text_product_weight_format, item.weight)
+        binding.tvPrice.text = itemView.context.getString(R.string.text_product_price_format, item.price)
     }
 }

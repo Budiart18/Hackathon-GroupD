@@ -8,4 +8,8 @@
         android:id="@+id/fruitListFragment"
         android:name="com.aeryz.hackathon3_groupd.presentation.fruitlist.FruitListFragment"
         android:label="FruitListFragment" />
+    <fragment
+        android:id="@+id/fruitDetailFragment"
+        android:name="com.aeryz.hackathon3_groupd.presentation.fruitdetail.FruitDetailFragment"
+        android:label="FruitDetailFragment" />
 </navigation>
