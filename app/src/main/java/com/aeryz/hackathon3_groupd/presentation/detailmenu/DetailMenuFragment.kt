@@ -5,56 +5,85 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import coil.load
 import com.aeryz.hackathon3_groupd.R
+import com.aeryz.hackathon3_groupd.databinding.FragmentDetailMenuBinding
+import com.aeryz.hackathon3_groupd.model.Product
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [DetailMenuFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class DetailMenuFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
+    companion object{
+        const val ARGS_PRODUCT = "ARGS_PRODUCT"
     }
+
+    private val product : Product? by lazy {
+        DetailMenuFragmentArgs.fromBundle(arguments as Bundle).product
+    }
+
+    private lateinit var binding: FragmentDetailMenuBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_detail_menu, container, false)
+        binding = FragmentDetailMenuBinding.inflate(inflater,container,false)
+        return binding.root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment DetailMenuFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            DetailMenuFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        showProductData()
+        buttonBuyNow()
+        countTotalPrice()
     }
+
+    private fun countTotalPrice() {
+        var totalProduct : Int = 1
+        var totalPrice : Double
+        val plusButton = binding.ivPlusButton
+        val minusButton = binding.ivMinusButton
+        val textTotalProduct = binding.tvProductCount
+        val textTotalPrice = binding.tvProductPrice
+        plusButton.setOnClickListener{
+            totalProduct += 1
+            totalPrice = (totalProduct * (product?.price?.toInt() ?: 0)).toDouble()
+            textTotalProduct.text = totalProduct.toString()
+            textTotalPrice.text = getString(R.string.text_product_price_format_idr, totalPrice)
+        }
+        minusButton.setOnClickListener{
+            if (totalProduct <= 1){
+                totalProduct = 1
+            } else {
+                totalProduct -= 1
+                totalPrice = (totalProduct * (product?.price?.toInt() ?: 0)).toDouble()
+                textTotalProduct.text = totalProduct.toString()
+                textTotalPrice.text = getString(R.string.text_product_price_format_idr, totalPrice)
+            }
+        }
+    }
+
+    private fun buttonBuyNow() {
+        binding.btnBuyNow.setOnClickListener{
+            Toast.makeText(
+                requireContext(),
+                "Buying ${product?.name} is success",
+                Toast.LENGTH_SHORT
+            ).show()
+        }
+    }
+
+    private fun showProductData() {
+        if (product != null){
+            binding.ivProductImg.load(product?.imgUrl)
+            binding.tvProductName.text = product?.name
+            binding.tvProductRating.text = product?.rating.toString()
+            binding.tvProductDesc.text = product?.desc
+            binding.tvProductShop.text = getString(R.string.text_by_shop, product?.supplierName)
+            binding.tvProductPrice.text = getString(R.string.text_product_price_format_idr, product?.price)
+        } else {
+            Toast.makeText(requireContext(), "Product Detail is Null", Toast.LENGTH_SHORT).show()
+        }
+    }
+
 }

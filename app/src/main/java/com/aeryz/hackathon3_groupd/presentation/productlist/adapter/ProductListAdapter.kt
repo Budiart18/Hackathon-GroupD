@@ -1,4 +1,4 @@
-package com.aeryz.hackathon3_groupd.presentation.fruitlist.adapter
+package com.aeryz.hackathon3_groupd.presentation.productlist.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -7,10 +7,10 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.aeryz.hackathon3_groupd.R
-import com.aeryz.hackathon3_groupd.databinding.FruitItemListBinding
+import com.aeryz.hackathon3_groupd.databinding.ProductItemListBinding
 import com.aeryz.hackathon3_groupd.model.Product
 
-class FruitListAdapter(private val onItemClick: (Product) -> Unit): RecyclerView.Adapter<FruitListViewHolder>()
+class ProductListAdapter(private val onItemClick: (Product) -> Unit): RecyclerView.Adapter<ProductListViewHolder>()
 {
     private val differ = AsyncListDiffer(this, object : DiffUtil.ItemCallback<Product>() {
         override fun areItemsTheSame(oldItem: Product, newItem:  Product): Boolean {
@@ -26,9 +26,9 @@ class FruitListAdapter(private val onItemClick: (Product) -> Unit): RecyclerView
         differ.submitList(data)
         notifyItemRangeChanged(0, data.size)
     }
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FruitListViewHolder {
-        return FruitListViewHolder(
-            binding = FruitItemListBinding.inflate(
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductListViewHolder {
+        return ProductListViewHolder(
+            binding = ProductItemListBinding.inflate(
                 LayoutInflater.from(parent.context), parent, false
             ),
             onItemClick = onItemClick
@@ -37,14 +37,14 @@ class FruitListAdapter(private val onItemClick: (Product) -> Unit): RecyclerView
 
     override fun getItemCount(): Int = differ.currentList.size
 
-    override fun onBindViewHolder(holder: FruitListViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ProductListViewHolder, position: Int) {
         holder.bind(differ.currentList[position])
     }
 
 }
 
-class FruitListViewHolder(
-    private val binding: FruitItemListBinding,
+class ProductListViewHolder(
+    private val binding: ProductItemListBinding,
     private val onItemClick: (Product) -> Unit
 ) : RecyclerView.ViewHolder(binding.root) {
     fun bind(item: Product) {

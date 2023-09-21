@@ -3,11 +3,11 @@ package com.aeryz.hackathon3_groupd.data
 import com.aeryz.hackathon3_groupd.model.Product
 
 interface ProductDataSource{
-    fun getFruits(): List<Product>
+    fun getProduct(): List<Product>
 }
 
 class ProductDataSourceImpl() : ProductDataSource {
-    override fun getFruits(): List<Product> = listOf(
+    override fun getProduct(): List<Product> = listOf(
         Product(
             position = 1,
             name = "Banana",
